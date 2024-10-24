@@ -24,7 +24,8 @@ namespace GettingStarted
                             cfg.ConfigureEndpoints(context);
                         });
                     });
-
+                    
+                    // TODO: Move to manager
                     services.AddHostedService<Worker>();
                 });
     }

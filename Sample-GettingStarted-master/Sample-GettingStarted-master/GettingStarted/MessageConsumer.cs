@@ -7,6 +7,8 @@ namespace GettingStarted
     public class Message
     {
         public string Text { get; set; }
+        
+        // TODO: Constructor to create JSON
     }
 
     public class MessageConsumer :
