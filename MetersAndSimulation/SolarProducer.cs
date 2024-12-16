@@ -2,7 +2,7 @@ namespace DefaultNamespace;
 
 using System.Globalization;
 
-public class SolarProducer : Power_source
+public class SolarProducer : PowerSource
 {
     private int _size;
     private Dictionary<string, float> _simdata =  new Dictionary<string, float>();
@@ -28,9 +28,9 @@ public class SolarProducer : Power_source
         return result;
     }
 
-    public float get_power(System.DateTime time)
+    public float get_power(System.DateTime time, float weatherfactor = 100)
     {
         string curtime = roundtime(time);
-        return _simdata[curtime];
+        return _simdata[curtime] * weatherfactor/100;
     }
 }
