@@ -8,7 +8,7 @@ namespace GettingStarted
         {
             List<SmartMeter> testList = [new SmartMeter()];
 
-            var manager = new SimulationManager(args, testList, 9000);
+            var manager = new SimulationManager(args, testList, 900);
         }
     }
 }

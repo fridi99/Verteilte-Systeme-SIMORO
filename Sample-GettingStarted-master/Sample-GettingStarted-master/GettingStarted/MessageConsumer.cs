@@ -6,21 +6,16 @@ using Microsoft.Extensions.Logging;
 
 namespace GettingStarted
 {
-    public class Message (Guid meteringPointNumber, double meterReading, SmartMeterStatus status)
+    public class MeteringPoint (Guid meteringPointNumber, double meterReading, SmartMeterStatus status)
     {
-        private class MeteringPoint (Guid _meteringPointNumber, double _meterReading, SmartMeterStatus _status)
-        {
-            public Guid meteringPointNumber { get; } = _meteringPointNumber;
-            public double meterReading { get; } = _meterReading;
-            public SmartMeterStatus status { get; } =  _status;
-            public DateTimeOffset timestamp { get; } = DateTimeOffset.Now;
-        }
-        
-        public string Text { get; } = JsonSerializer.Serialize(new MeteringPoint(meteringPointNumber, meterReading, status));
+        public Guid MeteringPointNumber { get; } = meteringPointNumber;
+        public double MeterReading { get; } = meterReading;
+        public SmartMeterStatus Status { get; } =  status;
+        public DateTimeOffset Timestamp { get; } = DateTimeOffset.Now;
     }
 
     public class MessageConsumer :
-        IConsumer<Message>
+        IConsumer<MeteringPoint>
     {
         readonly ILogger<MessageConsumer> _logger;
 
@@ -29,9 +24,9 @@ namespace GettingStarted
             _logger = logger;
         }
 
-        public Task Consume(ConsumeContext<Message> context)
+        public Task Consume(ConsumeContext<MeteringPoint> context)
         {
-            _logger.LogInformation("Received Text: {Text}", context.Message.Text);
+            _logger.LogInformation("Received Text: {Text}", context.Message);
 
             return Task.CompletedTask;
         }
