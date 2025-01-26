@@ -1,6 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using MassTransit;
+using System.Collections.Generic;
 
 namespace GettingStarted
 {
@@ -8,25 +6,9 @@ namespace GettingStarted
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            List<SmartMeter> testList = [new SmartMeter()];
+
+            var manager = new SimulationManager(args, testList, 900);
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddMassTransit(x =>
-                    {
-                        //x.AddConsumer<MessageConsumer>();
-
-                        x.UsingRabbitMq((context,cfg) =>
-                        {
-                            cfg.ConfigureEndpoints(context);
-                        });
-                    });
-                    
-                    // TODO: Move to manager
-                    services.AddHostedService<Worker>();
-                });
     }
 }

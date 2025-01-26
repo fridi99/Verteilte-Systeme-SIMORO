@@ -1,18 +1,21 @@
+using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
 namespace GettingStarted
 {
-    public class Message
+    public class MeteringPoint (Guid meteringPointNumber, double meterReading, SmartMeterStatus status)
     {
-        public string Text { get; set; }
-        
-        // TODO: Constructor to create JSON
+        public Guid MeteringPointNumber { get; } = meteringPointNumber;
+        public double MeterReading { get; } = meterReading;
+        public SmartMeterStatus Status { get; } =  status;
+        public DateTimeOffset Timestamp { get; } = DateTimeOffset.Now;
     }
 
     public class MessageConsumer :
-        IConsumer<Message>
+        IConsumer<MeteringPoint>
     {
         readonly ILogger<MessageConsumer> _logger;
 
@@ -21,9 +24,9 @@ namespace GettingStarted
             _logger = logger;
         }
 
-        public Task Consume(ConsumeContext<Message> context)
+        public Task Consume(ConsumeContext<MeteringPoint> context)
         {
-            _logger.LogInformation("Received Text: {Text}", context.Message.Text);
+            _logger.LogInformation("Received Text: {Text}", context.Message);
 
             return Task.CompletedTask;
         }
