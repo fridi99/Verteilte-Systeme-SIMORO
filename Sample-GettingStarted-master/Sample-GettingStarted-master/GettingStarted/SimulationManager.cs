@@ -32,7 +32,7 @@ public class SimulationManager
             {
                 services.AddMassTransit(x =>
                 {
-                    // x.AddConsumer<MessageConsumer>();
+                    x.AddConsumer<MessageConsumer>();
 
                     x.UsingRabbitMq((context,cfg) =>
                     {
