@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 
 namespace GettingStarted
 {
@@ -6,9 +8,11 @@ namespace GettingStarted
     {
         public static void Main(string[] args)
         {
-            List<SmartMeter> testList = [new SmartMeter()];
-
+            SolarProducer solar1 = new SolarProducer(5);
+            List<SmartMeter> testList = [new SmartMeter(solar1)];
+            Console.WriteLine(testList[0].get_power(DateTime.Now));
             var manager = new SimulationManager(args, testList, 900);
+            
         }
     }
 }

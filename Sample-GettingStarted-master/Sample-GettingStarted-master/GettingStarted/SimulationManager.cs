@@ -61,6 +61,7 @@ public class SimulationManager
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var i = 1;
+            DateTime simtime = new DateTime(2025,1,1, 9, 0, 0);
             while (!stoppingToken.IsCancellationRequested)
             {
                 System.Console.Out.WriteLine(i++);
@@ -68,11 +69,13 @@ public class SimulationManager
                 {
                     // TODO: Implement Simulation Time update
                     // TODO: Update CurrentValue with Simulation class
+                    smartMeter.update(simtime);
                     var data = new MeteringPoint(smartMeter.Id, smartMeter.CurrentValue, smartMeter.Status);
+                    Console.WriteLine($"[{simtime}] {smartMeter.CurrentValue} : {smartMeter.Status}");
                     await _bus.Publish(data, stoppingToken);
                 }
-                
-                await Task.Delay(900000 / ((_simTimeAcceleration != 0) ? _simTimeAcceleration : 1), stoppingToken);
+                simtime = simtime.AddSeconds(_simTimeAcceleration*10);                
+                await Task.Delay(10_000);
             }
         }  
     }
