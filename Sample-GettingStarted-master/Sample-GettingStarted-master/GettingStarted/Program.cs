@@ -15,9 +15,8 @@ namespace GettingStarted
             GeneralConsumer genConsumer1 =
                 new GeneralConsumer([new DateTime(1, 1, 1, 12, 0, 0), new DateTime(1, 1, 1, 20, 0, 0)], 10);
             List<SmartMeter> testList = [new SmartMeter(solar1), new SmartMeter(wind1), new SmartMeter(streetLight1), new SmartMeter(comBuilding1), new SmartMeter(genConsumer1) ];
-            Console.WriteLine(testList[0].get_power(DateTime.Now));
-            var manager = new SimulationManager(args, testList, 900);
             
+            var manager = new SimulationManager(args, testList, 180);
         }
     }
 }

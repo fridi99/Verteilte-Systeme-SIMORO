@@ -18,6 +18,7 @@ public class SimulationManager
 {
     private static List<SmartMeter> _smartMeters = [];
     private static int _simTimeAcceleration = 1;
+    private static int _samprate = 5; 
         
     public SimulationManager(string[] args, List<SmartMeter> smartMeters,  int simTimeAcceleration)
     {
@@ -74,8 +75,8 @@ public class SimulationManager
                     Console.WriteLine($"[{simtime}] {smartMeter.CurrentValue} : {smartMeter.Status}");
                     await _bus.Publish(data, stoppingToken);
                 }
-                simtime = simtime.AddSeconds(_simTimeAcceleration*10);                
-                await Task.Delay(10_000);
+                simtime = simtime.AddSeconds(_simTimeAcceleration*_samprate);                
+                await Task.Delay(_samprate*1000);
             }
         }  
     }
