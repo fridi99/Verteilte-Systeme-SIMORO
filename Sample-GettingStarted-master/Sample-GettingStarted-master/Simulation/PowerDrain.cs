@@ -1,5 +1,6 @@
-namespace DefaultNamespace;
 using System;
+
+namespace Simulation;
 
 public abstract class PowerDrain : IPowerSource
 {

@@ -1,0 +1,6 @@
+C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\obj\Debug\net8.0\MongoDBConsumer.csproj.AssemblyReference.cache
+C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\obj\Debug\net8.0\MongoDBConsumer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\obj\Debug\net8.0\MongoDBConsumer.AssemblyInfoInputs.cache
+C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\obj\Debug\net8.0\MongoDBConsumer.AssemblyInfo.cs
+C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\obj\Debug\net8.0\MongoDBConsumer.csproj.CoreCompileInputs.cache
+C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\obj\Debug\net8.0\MongoDBConsumer.sourcelink.json

@@ -1,19 +1,20 @@
-namespace DefaultNamespace;
 using System;
 
-public class CommercialBuilding : PowerDrain
-// the CommercialBuilding Class only drains during working hours
+namespace Simulation;
+
+public class StreetLight : PowerDrain
+// this class will only drain during the day time
 {
     private float _size = 1;
 
-    public CommercialBuilding(float size = 1)
+    public StreetLight(float size = 1)
     {
         _size = size;
     }
-    
+
     public override float get_power(DateTime time, float weatherfactor = 100)
     {
-        if (time.Hour >= 9 && time.Hour <= 17)
+        if (time.Hour <= 6 || time.Hour >= 20)
         {
             return -_size;
         }

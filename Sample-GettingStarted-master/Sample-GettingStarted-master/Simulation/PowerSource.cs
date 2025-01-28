@@ -1,4 +1,4 @@
-namespace DefaultNamespace;
+namespace Simulation;
 
 public abstract class PowerSource : IPowerSource
 /// <summary>

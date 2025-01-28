@@ -1,4 +1,4 @@
-namespace GettingStarted;
+namespace Simulation;
 
 public enum SmartMeterStatus
 {

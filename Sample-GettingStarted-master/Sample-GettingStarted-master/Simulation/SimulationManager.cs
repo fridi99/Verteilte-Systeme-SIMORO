@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 
 
-namespace GettingStarted;
+namespace Simulation;
 
 /// <summary>
 /// Manages Smartmeter classes
@@ -33,8 +33,6 @@ public class SimulationManager
             {
                 services.AddMassTransit(x =>
                 {
-                    x.AddConsumer<MessageConsumer>();
-
                     x.UsingRabbitMq((context,cfg) =>
                     {
                         cfg.Host("localhost", h =>
@@ -44,23 +42,19 @@ public class SimulationManager
                                 bp.Enabled = false;
                             });
                         });
-                        cfg.ReceiveEndpoint("SmartMeter", e =>
-                        {
-                            e.Bind("SmartMeter");
-                        });
-                        cfg.ConfigureEndpoints(context);
                     });
                 });
 
-                services.AddHostedService<Publisher>();
+                services.AddSingleton<IHostedService, Publisher>();
             });
 
     private class Publisher(IBus bus) : BackgroundService
     {
         private readonly IBus _bus = bus;
-
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            var endpoint = await _bus.GetSendEndpoint(new Uri("queue:SmartMeter"));
+            
             var i = 1;
             DateTime simtime = new DateTime(2025,1,1, 9, 0, 0);
             while (!stoppingToken.IsCancellationRequested)
@@ -71,12 +65,12 @@ public class SimulationManager
                     // TODO: Implement Simulation Time update
                     // TODO: Update CurrentValue with Simulation class
                     smartMeter.update(simtime);
-                    var data = new MeteringPoint(smartMeter.Id, smartMeter.CurrentValue, smartMeter.Status);
+                    var data = new MeteringPoint(smartMeter.Id.ToString(), smartMeter.CurrentValue, smartMeter.Status, simtime);
                     Console.WriteLine($"[{simtime}] {smartMeter.CurrentValue} : {smartMeter.Status}");
-                    await _bus.Publish(data, stoppingToken);
+                    await endpoint.Send(data, stoppingToken);
                 }
                 simtime = simtime.AddSeconds(_simTimeAcceleration*_samprate);                
-                await Task.Delay(_samprate*1000);
+                await Task.Delay(_samprate*1000, stoppingToken);
             }
         }  
     }

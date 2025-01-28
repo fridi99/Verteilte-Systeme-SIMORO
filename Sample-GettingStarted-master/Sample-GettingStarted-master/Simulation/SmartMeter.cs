@@ -1,11 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using DefaultNamespace;
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 
-namespace GettingStarted
+namespace Simulation
 {
     /// TODO: Connect with Simulation class
     public class SmartMeter

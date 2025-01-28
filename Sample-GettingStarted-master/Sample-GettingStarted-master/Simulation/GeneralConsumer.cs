@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 
-namespace DefaultNamespace;
-using System;
+namespace Simulation;
 
 public class GeneralConsumer : PowerDrain
 // this class can have any on/off times, given by the list argument of the constructor

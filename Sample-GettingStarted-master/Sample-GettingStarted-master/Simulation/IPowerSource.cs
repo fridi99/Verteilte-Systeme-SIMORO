@@ -1,5 +1,6 @@
 using System;
-namespace DefaultNamespace;
+
+namespace Simulation;
 
 public interface IPowerSource
 // Interface for all the Power Classes. Only enforces the single interface function
