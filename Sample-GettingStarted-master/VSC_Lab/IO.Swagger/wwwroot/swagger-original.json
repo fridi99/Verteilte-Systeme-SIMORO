@@ -1,0 +1,365 @@
+{
+  "openapi" : "3.1.0",
+  "info" : {
+    "title" : "Metering Point API",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "paths" : {
+    "/metering_points/{id_}/energy_data" : {
+      "get" : {
+        "tags" : [ "energy_data" ],
+        "summary" : "Get most recent Energy Data Entry",
+        "operationId" : "get_energy_data_entry_energy_data__id___get",
+        "parameters" : [ {
+          "name" : "id_",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "title" : "Id "
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/EnergyData"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found Error"
+          },
+          "422" : {
+            "description" : "Validation Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metering_points" : {
+      "get" : {
+        "tags" : [ "metering_points" ],
+        "summary" : "Get Metering Points",
+        "operationId" : "get_metering_points_metering_points_get",
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "title" : "Response Get Metering Points Metering Points Get",
+                  "items" : {
+                    "$ref" : "#/components/schemas/MeteringPoint"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "metering_points" ],
+        "summary" : "Create Metering Point",
+        "operationId" : "create_metering_point_metering_points_post",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MeteringPoint"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MeteringPoint"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found Error"
+          },
+          "422" : {
+            "description" : "Validation Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metering_points/{id_}" : {
+      "get" : {
+        "tags" : [ "metering_points" ],
+        "summary" : "Get Metering Point",
+        "operationId" : "get_metering_point_metering_points__id___get",
+        "parameters" : [ {
+          "name" : "id_",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "title" : "Id "
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MeteringPoint"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found Error"
+          },
+          "422" : {
+            "description" : "Validation Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "metering_points" ],
+        "summary" : "Update Metering Point",
+        "operationId" : "update_metering_point_metering_points__id___put",
+        "parameters" : [ {
+          "name" : "id_",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "title" : "Id "
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MeteringPoint"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found Error"
+          },
+          "422" : {
+            "description" : "Validation Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "metering_points" ],
+        "summary" : "Delete Metering Point",
+        "operationId" : "delete_metering_point_metering_points__id___delete",
+        "parameters" : [ {
+          "name" : "id_",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "title" : "Id "
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful Response"
+          },
+          "404" : {
+            "description" : "Not Found Error"
+          },
+          "422" : {
+            "description" : "Validation Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Customer" : {
+        "title" : "Customer Data",
+        "required" : [ "city", "country", "dateOfBirth", "email", "firstName", "id", "lastName", "phoneNumberMobile", "postalCode", "street" ],
+        "properties" : {
+          "id" : {
+            "title" : "Id",
+            "format" : "uuid"
+          },
+          "email" : {
+            "title" : "Email"
+          },
+          "firstName" : {
+            "title" : "Firstname"
+          },
+          "lastName" : {
+            "title" : "Lastname"
+          },
+          "street" : {
+            "title" : "Street"
+          },
+          "postalCode" : {
+            "title" : "Postalcode"
+          },
+          "city" : {
+            "title" : "City"
+          },
+          "country" : {
+            "title" : "Country"
+          },
+          "dateOfBirth" : {
+            "title" : "Dateofbirth",
+            "format" : "date-time"
+          },
+          "phoneNumberMobile" : {
+            "title" : "Phonenumbermobile"
+          }
+        }
+      },
+      "EnergyData" : {
+        "title" : "EnergyData",
+        "required" : [ "meterReading", "meteringPointNumber" ],
+        "properties" : {
+          "meteringPointNumber" : {
+            "title" : "Meteringpointnumber"
+          },
+          "meterReading" : {
+            "title" : "Meterreading",
+            "minimum" : 0
+          },
+          "operationStatus" : {
+            "$ref" : "#/components/schemas/OperationStatus"
+          },
+          "timestamp" : {
+            "title" : "Timestamp",
+            "format" : "date-time"
+          }
+        },
+        "example" : {
+          "operationStatus" : "",
+          "meteringPointNumber" : "",
+          "meterReading" : "",
+          "timestamp" : ""
+        }
+      },
+      "HTTPValidationError" : {
+        "title" : "HTTPValidationError",
+        "properties" : {
+          "detail" : {
+            "title" : "Detail",
+            "items" : {
+              "$ref" : "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "MeteringPoint" : {
+        "title" : "MeteringPoint",
+        "required" : [ "id", "meterReading", "meteringPointNumber", "owner" ],
+        "properties" : {
+          "name" : {
+            "title" : "Name",
+            "default" : ""
+          },
+          "description" : {
+            "title" : "Description",
+            "default" : ""
+          },
+          "id" : {
+            "title" : "Id",
+            "format" : "uuid"
+          },
+          "owner" : {
+            "title" : "Owner",
+            "format" : "uuid"
+          },
+          "meteringPointNumber" : {
+            "title" : "Meteringpointnumber"
+          }
+        },
+        "example" : {
+          "owner" : "",
+          "meteringPointNumber" : "",
+          "name" : "",
+          "description" : "",
+          "id" : ""
+        }
+      },
+      "OperationStatus" : {
+        "title" : "OperationStatus",
+        "enum" : [ "unknown", "ok", "maintenance" ]
+      },
+      "ValidationError" : {
+        "title" : "ValidationError",
+        "required" : [ "loc", "msg", "type" ],
+        "properties" : {
+          "loc" : {
+            "title" : "Location",
+            "items" : {
+              "anyOf" : [ { }, { } ]
+            }
+          },
+          "msg" : {
+            "title" : "Message"
+          },
+          "type" : {
+            "title" : "Error Type"
+          }
+        }
+      }
+    }
+  }
+}

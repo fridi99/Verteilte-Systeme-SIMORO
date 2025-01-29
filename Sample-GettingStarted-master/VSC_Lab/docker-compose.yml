@@ -1,0 +1,6 @@
+﻿services:
+  io.swagger:
+    image: io.swagger
+    build:
+      context: .
+      dockerfile: IO.Swagger/Dockerfile
