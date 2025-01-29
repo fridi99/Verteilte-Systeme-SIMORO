@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MongoDBConsumer
-build_property.ProjectDir = C:\Users\axs33\Desktop\FH IIR_Master\1. Semester\VerteilteSysteme_Cloud\Labor\Verteilte-Systeme-SIMORO\MongoDBConsumer\
+build_property.ProjectDir = C:\Users\fried\RiderProjects\Verteilte-Systeme-SIMORO\MongoDBConsumer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
